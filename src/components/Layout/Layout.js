@@ -3,7 +3,8 @@ import Auxiliary from '../../hoc/Auxiliary';
 const layout = (props) => (
     <Auxiliary>
         <div>
-            Toolbar,SideDrawer, Backdrop
+            {/* Some Style will come here */}
+            Toolbar, SideDrawer, Backdrop
         </div>
         <main>
             {props.children}

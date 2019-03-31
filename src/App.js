@@ -8,6 +8,7 @@ class App extends Component {
       <div>
         <Layout>
           <p>Testing</p>
+          {/* Some Component will come here */}
         </Layout>
 
       </div>
