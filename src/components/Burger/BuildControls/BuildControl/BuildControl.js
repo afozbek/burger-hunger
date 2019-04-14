@@ -19,6 +19,4 @@ const buildControl = props => {
   );
 };
 
-buildControl.propTypes = {};
-
 export default buildControl;
