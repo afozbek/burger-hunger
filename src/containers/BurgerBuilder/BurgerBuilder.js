@@ -3,7 +3,7 @@ import Auxiliary from "../../hoc/Auxiliary";
 
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
-import Modal from "../../components/UI/Modal/Model";
+import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -22,10 +22,11 @@ class BurgerBuilder extends Component {
       meat: 0
     },
     totalPrice: 5,
-    isPurchasable: false
+    isPurchasable: false,
+    purchasing: false
   };
 
-  updatePurchaseState = (ingredients, price) => {
+  updateStateHandler = (ingredients, price) => {
     //map the ingredients then return the sum in the sum constant
     const sum = Object.keys(ingredients)
       .map(type => {
@@ -51,7 +52,7 @@ class BurgerBuilder extends Component {
     const priceAdd = INGREDIENT_PRICES[type];
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice + priceAdd;
-    this.updatePurchaseState(updatedIngredients, newPrice);
+    this.updateStateHandler(updatedIngredients, newPrice);
   };
 
   removeIngredientHandler = type => {
@@ -68,7 +69,14 @@ class BurgerBuilder extends Component {
     const priceDeduction = INGREDIENT_PRICES[type];
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice - priceDeduction;
-    this.updatePurchaseState(updatedIngredients, newPrice);
+    this.updateStateHandler(updatedIngredients, newPrice);
+  };
+
+  purchaseHandler = () => {
+    this.setState({ purchasing: true });
+  };
+  purchaseCancelHandler = () => {
+    this.setState({ purchasing: false });
   };
 
   render() {
@@ -81,7 +89,10 @@ class BurgerBuilder extends Component {
 
     return (
       <Auxiliary>
-        <Modal>
+        <Modal
+          show={this.state.purchasing}
+          modalClosed={this.purchaseCancelHandler}
+        >
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
@@ -89,6 +100,7 @@ class BurgerBuilder extends Component {
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
           disabled={disabledInfo}
+          ordered={this.purchaseHandler}
           isPurchasable={this.state.isPurchasable}
           price={this.state.totalPrice}
         />
