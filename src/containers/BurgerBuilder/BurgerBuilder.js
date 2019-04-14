@@ -20,9 +20,25 @@ class BurgerBuilder extends Component {
       cheese: 0,
       meat: 0
     },
-    totalPrice: 5
+    totalPrice: 5,
+    isPurchasable: false
   };
 
+  updatePurchaseState = (ingredients, price) => {
+    //map the ingredients then return the sum in the sum constant
+    const sum = Object.keys(ingredients)
+      .map(type => {
+        return ingredients[type];
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0);
+    this.setState({
+      ingredients: ingredients,
+      totalPrice: price,
+      isPurchasable: sum > 0
+    });
+  };
   addIngredientHandler = type => {
     const oldCount = this.state.ingredients[type];
     const updatedCount = oldCount + 1;
@@ -34,10 +50,7 @@ class BurgerBuilder extends Component {
     const priceAdd = INGREDIENT_PRICES[type];
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice + priceAdd;
-    this.setState({
-      totalPrice: newPrice,
-      ingredients: updatedIngredients
-    });
+    this.updatePurchaseState(updatedIngredients, newPrice);
   };
 
   removeIngredientHandler = type => {
@@ -54,22 +67,13 @@ class BurgerBuilder extends Component {
     const priceDeduction = INGREDIENT_PRICES[type];
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice - priceDeduction;
-    this.setState({
-      totalPrice: newPrice,
-      ingredients: updatedIngredients
-    });
+    this.updatePurchaseState(updatedIngredients, newPrice);
   };
+
   render() {
     const disabledInfo = {
       ...this.state.ingredients
     };
-    /*
-    {
-      salad: true,
-      meat: false,
-      ...
-    } 
-    */
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
@@ -81,6 +85,7 @@ class BurgerBuilder extends Component {
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
           disabled={disabledInfo}
+          isPurchasable={this.state.isPurchasable}
           price={this.state.totalPrice}
         />
       </Auxiliary>
