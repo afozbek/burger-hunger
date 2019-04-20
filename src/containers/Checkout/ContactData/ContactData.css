@@ -7,9 +7,6 @@
   padding: 10px;
   border: 1px solid #eee;
 }
-.Input {
-  display: block;
-}
 
 @media (min-width: 600px) {
   .ContactData {
