@@ -3,7 +3,7 @@
 ## What is the purpose of this project?
 
 > Improve myself 😃
-- Learn how to use javascript front end framework, namely: REACT
+- Learn how to use javascript front end library, namely: REACT
 - Imrove my javascript knowledge and build a complete front end project
 - See the world other side. 
   - I build lots of project with back end. Time to see front end 😉.
