@@ -1,9 +1,5 @@
 import * as actionTypes from "./actionsTypes";
 import axios from "axios";
-<<<<<<< HEAD
-=======
-
->>>>>>> 27fb31a61332330c4fb2a8fa21f4eaee55e61f3d
 import { singupUrl, loginUrl, API_KEY } from "../../../keys";
 
 export const authStart = () => {
