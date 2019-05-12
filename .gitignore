@@ -36,3 +36,6 @@ yarn-error.log*
 # kaldığım yer
 kaldigim_yer.txt
  
+#keys
+
+keys.js
