@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionsTypes";
 import axios from "axios";
-import { singupUrl, loginUrl, API_KEY } from "../../../keys";
+import { singupUrl, loginUrl, API_KEY } from "../../keys";
 
 export const authStart = () => {
   return {
@@ -8,10 +8,27 @@ export const authStart = () => {
   };
 };
 
+export const checkAuthTimeout = expirationTime => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(logout());
+    }, expirationTime * 1000);
+  };
+};
+
+export const logout = () => {
+  return {
+    type: actionTypes.AUTH_LOGOUT
+  };
+};
+
 export const authSuccess = authData => {
   return {
     type: actionTypes.AUTH_SUCCESS,
-    payload: { authData }
+    payload: {
+      userId: authData.localId,
+      idToken: authData.idToken
+    }
   };
 };
 
@@ -41,10 +58,10 @@ export const auth = (email, password, isSignup = true) => {
       .then(res => {
         console.log(res.data);
         dispatch(authSuccess(res.data));
+        dispatch(checkAuthTimeout(res.data.expiresIn));
       })
       .catch(err => {
-        console.log(err);
-        dispatch(authFail(err));
+        dispatch(authFail(err.response.data.error));
       });
   };
 };
