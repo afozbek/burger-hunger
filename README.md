@@ -7,6 +7,13 @@
 - Imrove my javascript knowledge and build a complete front end project
 - See the world other side. 
   - I build lots of project with back end. Time to see front end 😉.
+  
+## What tecnologies used in this project?
+- [Firebase](https://firebase.google.com/)
+- [Redux](https://redux.js.org/)
+- [React](https://reactjs.org/)
+- [React Router](https://reacttraining.com/react-router/web)
+- Much More...✌
 
 ### Author
 - Also you can reach my gitlab account from [here](https://gitlab.com/afozbek)
