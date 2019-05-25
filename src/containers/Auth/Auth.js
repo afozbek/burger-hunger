@@ -128,13 +128,18 @@ class Auth extends Component {
     if (this.props.loading) form = <Spinner />;
 
     let errorMessage = null;
+
     const error = this.props.error;
+
     if (error) {
       errorMessage = <h1>{error.message}</h1>;
     }
+
     let authRedirect = null;
+
     if (this.props.isAuthenticated) {
       let path = this.props.authRedirectPath;
+
       authRedirect = <Redirect to={path} />;
     }
 

@@ -36,9 +36,11 @@ class BurgerBuilder extends Component {
       this.props.history.push("/auth");
     }
   };
+
   purchaseCancelHandler = () => {
     this.setState({ purchasing: false });
   };
+
   purchaseContinueHandler = () => {
     this.props.onInitPurchase();
     this.props.history.push("/checkout");
@@ -52,13 +54,20 @@ class BurgerBuilder extends Component {
     const disabledInfo = {
       ...this.props.ingredients
     };
+
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
+
     let orderSummary = null;
 
     let burger = this.props.error ? (
-      <p style={{ textAlign: "center" }}>Ingredients can't be received 😢</p>
+      <p style={{ textAlign: "center" }}>
+        Ingredients can't be received{" "}
+        <span role="img" aria-label="Sad Face">
+          😢
+        </span>
+      </p>
     ) : (
       <Spinner />
     );

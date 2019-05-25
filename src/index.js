@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
@@ -14,12 +14,14 @@ import authReducer from "./store/reducers/auth";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+// combine root reducer
 const rootReducer = combineReducers({
   burgerBuilder: burgerBuilderReducer,
   order: orderReducer,
   auth: authReducer
 });
 
+// create the redux store
 const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunk))
@@ -27,9 +29,9 @@ const store = createStore(
 
 const app = (
   <Provider store={store}>
-    <BrowserRouter>
+    <Router>
       <App />,
-    </BrowserRouter>
+    </Router>
   </Provider>
 );
 
