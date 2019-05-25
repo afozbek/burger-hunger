@@ -16,6 +16,7 @@ export const checkAuthTimeout = expirationTime => {
   };
 };
 
+// Logout Handler
 export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("expirationDate");
@@ -25,20 +26,18 @@ export const logout = () => {
   };
 };
 
-/**
- *
- * @param {Object} authData
- */
-export const authSuccess = authData => {
+// Auth Success Handler
+export const authSuccess = ({ localId, idToken }) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
     payload: {
-      userId: authData.localId,
-      idToken: authData.idToken
+      userId: localId,
+      idToken: idToken
     }
   };
 };
 
+// handle auth failing
 export const authFail = error => {
   return {
     type: actionTypes.AUTH_FAIL,
@@ -48,18 +47,23 @@ export const authFail = error => {
   };
 };
 
+// Handle login & signup state and set token if is login
 export const auth = (email, password, isSignup = true) => {
   return dispatch => {
     dispatch(authStart());
+
     const authData = {
       email: email,
       password: password,
       returnSecureToken: true
     };
+
     let url = `${singupUrl}${API_KEY}`;
+
     if (!isSignup) {
       url = `${loginUrl}${API_KEY}`;
     }
+
     axios
       .post(url, authData)
       .then(res => {
@@ -89,6 +93,7 @@ export const setAuthRedirect = path => {
   };
 };
 
+// check auth token state
 export const authCheckState = () => {
   return dispatch => {
     const token = localStorage.getItem("token");
