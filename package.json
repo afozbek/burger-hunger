@@ -17,6 +17,8 @@
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.1",
     "eslint": "5.12.0",
     "eslint-config-react-app": "^3.0.8",
     "eslint-loader": "2.1.1",
@@ -46,6 +48,7 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
+    "react-test-renderer": "^16.8.6",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "resolve": "1.10.0",
@@ -113,8 +116,8 @@
       "node"
     ],
     "watchPlugins": [
-      "C:\\Users\\zerosecond\\Desktop\\Projects\\burger_builder\\node_modules\\jest-watch-typeahead\\filename.js",
-      "C:\\Users\\zerosecond\\Desktop\\Projects\\burger_builder\\node_modules\\jest-watch-typeahead\\testname.js"
+      "C:\\Users\\furka\\Desktop\\Projects\\Burger Hunger\\node_modules\\jest-watch-typeahead\\filename.js",
+      "C:\\Users\\furka\\Desktop\\Projects\\Burger Hunger\\node_modules\\jest-watch-typeahead\\testname.js"
     ]
   },
   "babel": {
