@@ -18,7 +18,6 @@ const setAuthRedirect = (state, action) => {
 };
 
 const authSuccess = (state, action) => {
-  console.log(action.payload.idToken);
   return updateObject(state, {
     token: action.payload.idToken,
     userId: action.payload.userId,
