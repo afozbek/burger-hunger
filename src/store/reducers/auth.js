@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actionsTypes";
-import { updateObject } from "../utility";
+import { updateObject } from "../../shared/utility";
 
 const initialState = {
   token: null,
@@ -18,7 +18,6 @@ const setAuthRedirect = (state, action) => {
 };
 
 const authSuccess = (state, action) => {
-  console.log(action.payload.idToken);
   return updateObject(state, {
     token: action.payload.idToken,
     userId: action.payload.userId,

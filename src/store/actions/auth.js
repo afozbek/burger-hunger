@@ -110,7 +110,6 @@ export const authCheckState = () => {
           localId: userId,
           idToken: token
         };
-        console.log("[AuthData]", authData);
         dispatch(authSuccess(authData));
         dispatch(
           checkAuthTimeout(
