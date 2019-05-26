@@ -39,3 +39,14 @@ kaldigim_yer.txt
 #keys
 
 keys.js
+
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
+
+# End of https://www.gitignore.io/api/firebase
