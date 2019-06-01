@@ -10,6 +10,8 @@ import {
 
 import { initIngredientsSaga } from "./burgerBuilder";
 
+import { purchaseBurgerSaga } from "./order";
+
 // Saga Listeners
 // If some type happened what will I do?
 export function* watchAuth() {
@@ -21,4 +23,8 @@ export function* watchAuth() {
 
 export function* watchBurgerBuilder() {
   yield takeEvery(actionTypes.INIT_INGREDIENTS, initIngredientsSaga);
+}
+
+export function* watchOrder() {
+  yield takeEvery(actionTypes.PURCHASE_BURGER_INIT, purchaseBurgerSaga);
 }

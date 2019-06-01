@@ -25,7 +25,6 @@ export function* authSaga(action) {
     password: action.payload.password,
     returnSecureToken: true
   };
-  console.log(authData);
   let url = `${signupUrl}`;
 
   if (!action.payload.isSignup) {
