@@ -1,18 +1,26 @@
 # Burger Hunger Project
 
-One Paragraph of project description goes here
+Burger Hunger project is maid for personal development purposes. [Live Demo](https://afozbek.github.io/Burger-Hunger/)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+> You need to create firebase project and get and *API_KEY*
 
-### Prerequisites
+If you want to work on local machine, **clone** to project and then in your project working directory inside the *src* folder add `keys.js` file. This file expecting as an import so you should add exactly like that or change the import statement. In the `keys.js` file ;
 
-What things you need to install the software and how to install them
+```js
+// add your api key via firebase
+export const API_KEY = "YOUR_API_KEY_FROM_FIREBASE";
 
+export const signupUrl =
+  "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" +
+  API_KEY;
+export const loginUrl =
+  "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +
+  API_KEY;
 ```
-Give examples
-```
+
+For deploying firebase project you can follow [these](https://www.robinwieruch.de/firebase-deploy-react-js/) steps .
 
 ### Installing
 
@@ -44,15 +52,15 @@ If you want to deploy project via github pages. Follow [these](https://reactgo.c
 
 ## Contributing
 
-- You can create issue from [here](https://github.com/afozbek/Burger-Hunger/issues)
-- Or you can fork the project and submit new pull requests
+- If you have problems please leave an issue from [here](https://github.com/afozbek/Burger-Hunger/issues)
+- Consider forking the project and submitting new pull requests. I am much likely control [my github account](https://github.com/afozbek).
 
 
 ## Author
 
-- You can reach my _github_ account from [here](https://github.com/afozbek)
-- You can reach my _gitlab_ account from [here](https://gitlab.com/afozbek)
-  > You can contact me anytime you want from [here](mailto:furkanozbek1995@gmail.com)😊.
+- Follow me on [_github_](https://github.com/afozbek)
+- Follow me on [_gitlab_](https://gitlab.com/afozbek)
+  > Contact me for your problems from [here](mailto:furkanozbek1995@gmail.com). I am gladly answer you 😊.
 
 ## License
 
