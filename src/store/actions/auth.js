@@ -1,28 +1,8 @@
 import * as actionTypes from "./actionsTypes";
-import axios from "axios";
-import { singupUrl, loginUrl, API_KEY } from "../../keys";
 
 export const authStart = () => {
   return {
     type: actionTypes.AUTH_START
-  };
-};
-
-export const checkAuthTimeout = expirationTime => {
-  return dispatch => {
-    setTimeout(() => {
-      dispatch(logout());
-    }, expirationTime * 1000);
-  };
-};
-
-// Logout Handler
-export const logout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("expirationDate");
-  localStorage.removeItem("userId");
-  return {
-    type: actionTypes.AUTH_LOGOUT
   };
 };
 
@@ -47,40 +27,37 @@ export const authFail = error => {
   };
 };
 
+export const checkAuthTimeout = expirationTime => {
+  return {
+    type: actionTypes.AUTH_CHECK_TIMEOUT,
+    payload: {
+      expirationTime: expirationTime
+    }
+  };
+};
+
+// Logout Handler
+export const logout = () => {
+  return {
+    type: actionTypes.AUTH_INITIATE_LOGOUT
+  };
+};
+
+export const logoutSuccess = () => {
+  return {
+    type: actionTypes.AUTH_LOGOUT
+  };
+};
+
 // Handle login & signup state and set token if is login
 export const auth = (email, password, isSignup = true) => {
-  return dispatch => {
-    dispatch(authStart());
-
-    const authData = {
+  return {
+    type: actionTypes.AUTH_USER,
+    payload: {
       email: email,
       password: password,
-      returnSecureToken: true
-    };
-
-    let url = `${singupUrl}${API_KEY}`;
-
-    if (!isSignup) {
-      url = `${loginUrl}${API_KEY}`;
+      isSignup: isSignup
     }
-
-    axios
-      .post(url, authData)
-      .then(res => {
-        const expirationDate = new Date(
-          new Date().getTime() + res.data.expiresIn * 1000
-        );
-
-        localStorage.setItem("token", res.data.idToken);
-        localStorage.setItem("expirationDate", expirationDate);
-        localStorage.setItem("userId", res.data.localId);
-
-        dispatch(authSuccess(res.data));
-        dispatch(checkAuthTimeout(res.data.expiresIn));
-      })
-      .catch(err => {
-        dispatch(authFail(err.response.data.error));
-      });
   };
 };
 
@@ -95,28 +72,7 @@ export const setAuthRedirect = path => {
 
 // check auth token state
 export const authCheckState = () => {
-  return dispatch => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      dispatch(logout());
-    } else {
-      const expirationDate = new Date(localStorage.getItem("expirationDate"));
-      // Check to see if token is expires
-      if (expirationDate <= new Date()) {
-        dispatch(logout());
-      } else {
-        const userId = localStorage.getItem("userId");
-        const authData = {
-          localId: userId,
-          idToken: token
-        };
-        dispatch(authSuccess(authData));
-        dispatch(
-          checkAuthTimeout(
-            (expirationDate.getTime() - new Date().getTime()) / 1000
-          )
-        );
-      }
-    }
+  return {
+    type: actionTypes.AUTH_CHECK_STATE
   };
 };
