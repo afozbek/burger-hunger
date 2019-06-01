@@ -1,10 +1,8 @@
 # Burger Hunger Project
 
-One Paragraph of project description goes here
+Burger Hunger project is maid for personal development purposes. [Live Demo](https://afozbek.github.io/Burger-Hunger/)
 
 ## Getting Started
-
-Burger Hunger project is maid for personal development purposes. [Live Demo](https://afozbek.github.io/Burger-Hunger/)
 
 > You need to create firebase project and get and *API_KEY*
 
