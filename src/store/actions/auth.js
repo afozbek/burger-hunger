@@ -1,6 +1,4 @@
 import * as actionTypes from "./actionsTypes";
-import axios from "axios";
-import { signupUrl, loginUrl } from "../../keys";
 
 export const authStart = () => {
   return {
