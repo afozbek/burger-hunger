@@ -4,15 +4,24 @@ One Paragraph of project description goes here
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Burger Hunger project is maid for personal development purposes. [Live Demo](https://afozbek.github.io/Burger-Hunger/)
 
-### Prerequisites
+> You need to create firebase project and get and *API_KEY*
 
-What things you need to install the software and how to install them
+If you want to work on local machine, **clone** to project and then in your project working directory inside the *src* folder add `keys.js` file. This file expecting as an import so you should add exactly like that or change the import statement. In the `keys.js` file ;
 
+```js
+// add your api key via firebase
+export const API_KEY = "YOUR_API_KEY_FROM_FIREBASE";
+
+export const signupUrl =
+  "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" +
+  API_KEY;
+export const loginUrl =
+  "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +
+  API_KEY;
 ```
-Give examples
-```
+
 
 ### Installing
 
