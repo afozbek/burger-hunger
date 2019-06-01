@@ -8,21 +8,6 @@ export const authStart = () => {
   };
 };
 
-export const checkAuthTimeout = expirationTime => {
-  return dispatch => {
-    setTimeout(() => {
-      dispatch(logout());
-    }, expirationTime * 1000);
-  };
-};
-
-// Logout Handler
-export const logout = () => {
-  return {
-    type: actionTypes.AUTH_INITIATE_LOGOUT
-  };
-};
-
 // Auth Success Handler
 export const authSuccess = ({ localId, idToken }) => {
   return {
@@ -41,6 +26,28 @@ export const authFail = error => {
     payload: {
       error: error
     }
+  };
+};
+
+export const checkAuthTimeout = expirationTime => {
+  return {
+    type: actionTypes.AUTH_CHECK_TIMEOUT,
+    payload: {
+      expirationTime: expirationTime
+    }
+  };
+};
+
+// Logout Handler
+export const logout = () => {
+  return {
+    type: actionTypes.AUTH_INITIATE_LOGOUT
+  };
+};
+
+export const logoutSuccess = () => {
+  return {
+    type: actionTypes.AUTH_LOGOUT
   };
 };
 
