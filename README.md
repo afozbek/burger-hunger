@@ -52,15 +52,15 @@ If you want to deploy project via github pages. Follow [these](https://reactgo.c
 
 ## Contributing
 
-- You can create issue from [here](https://github.com/afozbek/Burger-Hunger/issues)
-- Or you can fork the project and submit new pull requests.
+- If you have problems please leave an issue from [here](https://github.com/afozbek/Burger-Hunger/issues)
+- Consider forking the project and submitting new pull requests. I am much likely control [my github account](https://github.com/afozbek).
 
 
 ## Author
 
-- You can reach my _github_ account from [here](https://github.com/afozbek)
-- You can reach my _gitlab_ account from [here](https://gitlab.com/afozbek)
-  > You can contact me anytime you want from [here](mailto:furkanozbek1995@gmail.com)😊.
+- Follow me on [_github_](https://github.com/afozbek)
+- Follow me on [_gitlab_](https://gitlab.com/afozbek)
+  > Contact me for your problems from [here](mailto:furkanozbek1995@gmail.com). I am gladly answer you 😊.
 
 ## License
 
