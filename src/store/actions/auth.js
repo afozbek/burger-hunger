@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionsTypes";
 import axios from "axios";
-import { singupUrl, loginUrl, API_KEY } from "../../keys";
+import { signupUrl, loginUrl } from "../../keys";
 
 export const authStart = () => {
   return {
@@ -58,10 +58,10 @@ export const auth = (email, password, isSignup = true) => {
       returnSecureToken: true
     };
 
-    let url = `${singupUrl}${API_KEY}`;
+    let url = `${signupUrl}`;
 
     if (!isSignup) {
-      url = `${loginUrl}${API_KEY}`;
+      url = `${loginUrl}`;
     }
 
     axios
