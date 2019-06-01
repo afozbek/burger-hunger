@@ -22,6 +22,7 @@ export const loginUrl =
   API_KEY;
 ```
 
+For deploying firebase project you can follow [these](https://www.robinwieruch.de/firebase-deploy-react-js/) steps .
 
 ### Installing
 
@@ -54,7 +55,7 @@ If you want to deploy project via github pages. Follow [these](https://reactgo.c
 ## Contributing
 
 - You can create issue from [here](https://github.com/afozbek/Burger-Hunger/issues)
-- Or you can fork the project and submit new pull requests
+- Or you can fork the project and submit new pull requests.
 
 
 ## Author
