@@ -1,11 +1,16 @@
+import { delay } from "redux-saga/effects";
 import { put } from "redux-saga/effects";
-import * as actionTypes from "../actions/actionsTypes";
 
-function* logout(action) {
+import * as actions from "../actions";
+
+export function* logoutSaga(action) {
   yield localStorage.removeItem("token");
   yield localStorage.removeItem("expirationDate");
   yield localStorage.removeItem("userId");
-  yield put({
-    type: actionTypes.AUTH_LOGOUT
-  });
+  yield put(actions.logoutSuccess());
+}
+
+export function* checkAuthTimeoutSaga(action) {
+  yield delay(action.payload.expirationTime * 1000);
+  yield put(actions.logout());
 }
