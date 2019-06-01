@@ -48,3 +48,30 @@ export function* authSaga(action) {
     yield put(actions.authFail(err.response.data.error));
   }
 }
+
+export function* authCheckStateSaga(action) {
+  const token = yield localStorage.getItem("token");
+  if (!token) {
+    yield put(actions.logout());
+  } else {
+    const expirationDate = yield new Date(
+      localStorage.getItem("expirationDate")
+    );
+    // Check to see if token is expires
+    if (expirationDate <= new Date()) {
+      yield put(actions.logout());
+    } else {
+      const userId = yield localStorage.getItem("userId");
+      const authData = {
+        localId: userId,
+        idToken: token
+      };
+      yield put(actions.authSuccess(authData));
+      yield put(
+        actions.checkAuthTimeout(
+          (expirationDate.getTime() - new Date().getTime()) / 1000
+        )
+      );
+    }
+  }
+}
