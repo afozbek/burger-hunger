@@ -1,10 +1,24 @@
 import { takeEvery } from "redux-saga/effects";
 
 import * as actionTypes from "../actions/actionsTypes";
-import { logoutSaga, checkAuthTimeoutSaga, authSaga } from "./auth";
+import {
+  logoutSaga,
+  checkAuthTimeoutSaga,
+  authSaga,
+  authCheckStateSaga
+} from "./auth";
 
+import { initIngredientsSaga } from "./burgerBuilder";
+
+// Saga Listeners
+// If some type happened what will I do?
 export function* watchAuth() {
   yield takeEvery(actionTypes.AUTH_INITIATE_LOGOUT, logoutSaga);
   yield takeEvery(actionTypes.AUTH_CHECK_TIMEOUT, checkAuthTimeoutSaga);
   yield takeEvery(actionTypes.AUTH_USER, authSaga);
+  yield takeEvery(actionTypes.AUTH_CHECK_STATE, authCheckStateSaga);
+}
+
+export function* watchBurgerBuilder() {
+  yield takeEvery(actionTypes.INIT_INGREDIENTS, initIngredientsSaga);
 }
