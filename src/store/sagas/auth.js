@@ -1,9 +1,11 @@
 import { delay } from "redux-saga/effects";
 import { put, call } from "redux-saga/effects";
 import axios from "axios";
-import { signupUrl, loginUrl } from "../../keys";
 
 import * as actions from "../actions";
+
+const SIGNUP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
+const LOGIN_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
 
 export function* logoutSaga(action) {
   yield call([localStorage, "removeItem"], "token");
@@ -25,10 +27,11 @@ export function* authSaga(action) {
     password: action.payload.password,
     returnSecureToken: true
   };
-  let url = `${signupUrl}`;
+
+  let url = `${SIGNUP_URL}`;
 
   if (!action.payload.isSignup) {
-    url = `${loginUrl}`;
+    url = `${LOGIN_URL}`;
   }
   try {
     const response = yield axios.post(url, authData);

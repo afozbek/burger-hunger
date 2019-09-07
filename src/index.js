@@ -6,7 +6,6 @@ import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
 
-import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 import App from "./App";
 import burgerBuilderReducer from "./store/reducers/burgerBuilder";
@@ -15,23 +14,23 @@ import authReducer from "./store/reducers/auth";
 import { watchAuth, watchBurgerBuilder, watchOrder } from "./store/sagas";
 
 const composeEnhancers =
-  process.env.NODE_ENV === "development"
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : null || compose;
+    process.env.NODE_ENV === "development"
+        ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+        : null || compose;
 
 // combine root reducer
 const rootReducer = combineReducers({
-  burgerBuilder: burgerBuilderReducer,
-  order: orderReducer,
-  auth: authReducer
+    burgerBuilder: burgerBuilderReducer,
+    order: orderReducer,
+    auth: authReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();
 
 // create the redux store
 const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
+    rootReducer,
+    composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
 );
 
 sagaMiddleware.run(watchAuth);
@@ -39,16 +38,11 @@ sagaMiddleware.run(watchBurgerBuilder);
 sagaMiddleware.run(watchOrder);
 
 const app = (
-  <Provider store={store}>
-    <Router>
-      <App />,
-    </Router>
-  </Provider>
+    <Provider store={store}>
+        <Router>
+            <App />,
+        </Router>
+    </Provider>
 );
 
 ReactDOM.render(app, document.getElementById("root"));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
