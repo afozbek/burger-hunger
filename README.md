@@ -1,6 +1,6 @@
 # Burger Hunger Project
 
-Burger Hunger project is maid for personal development purposes. [Live Demo](https://afozbek.github.io/Burger-Hunger/)
+Burger Hunger project is maid for personal development purposes. [Live Demo](https://afozbek.github.io/burger-hunger/)
 
 ## Getting Started
 
