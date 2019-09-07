@@ -6,19 +6,14 @@ Burger Hunger project is maid for personal development purposes. [Live Demo](htt
 
 > You need to create firebase project and get and *API_KEY*
 
-If you want to work on local machine, **clone** to project and then in your project working directory inside the *src* folder add `keys.js` file. This file expecting as an import so you should add exactly like that or change the import statement. In the `keys.js` file ;
+If you want to work on local machine, **clone** to project and then in your project working directory add `.env` file. This file expecting as an import so you should add exactly like that or change the import statement. In the `.env` file add  ;
 
-```js
-// add your api key via firebase
-export const API_KEY = "YOUR_API_KEY_FROM_FIREBASE";
-
-export const signupUrl =
-  "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" +
-  API_KEY;
-export const loginUrl =
-  "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +
-  API_KEY;
 ```
+// add your api key via firebase
+REACT_APP_FIREBASE_API_KEY=[YOUR_API_KEY_FROM_FIREBASE];
+```
+
+You can look at the [official documentation](https://create-react-app.dev/docs/adding-custom-environment-variables) about .env files for exposing API_KEYS
 
 For deploying firebase project you can follow [these](https://www.robinwieruch.de/firebase-deploy-react-js/) steps .
 
@@ -26,7 +21,7 @@ For deploying firebase project you can follow [these](https://www.robinwieruch.d
 
 You can easily download required packages by running
 
-`npm install`
+`npm install` or `yarn install`
 
 ## Running the tests
 
